@@ -32,7 +32,7 @@ class: center, agenda, middle
 
 ## Distribuzioni Linux per Raspberry con Kodi
 
-* OpenELEC
+* OpenELEC / Libreelec
 * OSMC
 * XBian
 
@@ -44,7 +44,7 @@ class: center, agenda, middle
 
 * v.14 - Helix - OpenELEC v5
 * v.15 - Isengard - OpenELEC v6
-* v.16 - Jarvis (beta)
+* v.16 - Jarvis - Libreelec v7
 * v.17 - Kripton (prossima versione)
 
 ---
@@ -57,12 +57,13 @@ class: middle
 
 class: center, agenda, middle
 
-## Raspberry PI 2 - Mod. B (1Gb RAM)
+## Raspberry PI 2/3
 
 ![Center-aligned image](images/raspberrypi2.jpg)
 
 4 Porte USB, 1 Scheda di rete, 1 Porta HDMI
 
+PI 2 mod.B - 1Gb RAM / PI 3 mod.B 1,2 GHz 64 bit Wi-Fi e Bluetooth
 ---
 
 class: center, agenda, middle
@@ -95,10 +96,11 @@ class: center, agenda, middle
 
 class: center, agenda, middle
 
-## Alimentatore (5V, min. 2A)
+## Alimentatore
 
 ![Center-aligned image](images/alimentatore.jpg)
 
+5V. - 2A per PI 2, 3A per PI 3
 
 ---
 
@@ -151,77 +153,23 @@ class: center, agenda, middle
 
 ## Scaricare il programma
 
-Collegarsi al sito di openelec
+Collegarsi al sito di Libreelec
 
 ```bash
-http://openelec.tv/get-openelec
+https://libreelec.tv/downloads/
 ```
 
-Scaricare Kodi per Raspberry PI 2 (image)
-
-```bash
-http://releases.openelec.tv/OpenELEC-RPi2.arm-6.0.0.img.gz
-```
+Scaricare LibreELEC USB-SD Creator ed eseguirlo
 
 ---
 
 class: center, agenda, middle
 
-## Mettere Kodi nella MicroSD con Windows
+## Mettere Kodi nella MicroSD
 
-![Center-aligned image](images/logo-windows.png)
+![Center-aligned image](images/USB-creator.png)
 
-```bash
-# Usare il software Win32 Disk imager
-
-https://sourceforge.net/projects/win32diskimager
-```
-
----
-
-class: center, agenda, middle
-
-## Mettere Kodi nella MicroSD con MacOSX
-
-![Center-aligned image](images/logo-apple.png)
-
-```bash
-# decomprime il file (verrà creato un file con estensione .img)
-gunzip ./OpenELEC-RPi2.arm-6.0.1.img.gz
-
-# Mostra la lista dei disposivi
-diskutil list
-
-# Smonta la scheda SD
-diskutil unmountDisk /dev/disk2
-
-# Scrive l'immagine sulla SD
-dd if=./OpenELEC-RPi2.arm-6.0.0.img of=/dev/disk2 bs=4M
-```
-
----
-
-class: center, agenda, middle
-
-## Mettere Kodi nella MicroSD con Linux
-
-![Center-aligned image](images/logo-linux.png)
-
-```bash
-# decomprime il file (verrà creato un file con estensione .img)
-gunzip ./OpenELEC-RPi2.arm-6.0.1.img.gz
-
-# mostra la lista dei dispositivi
-sudo fdisk -l oppure df -h
-
-# Smonta il dispositivo con il comando
-sudo umount /dev/sdb1
-sudo umount /dev/sdb2
-
-# crea l'immagine
-sudo dd if=./OpenELEC-RPi2.arm-6.0.1.img of=/dev/sd[x] bs=4k
-
-```
+Inserire la chiavetta, selezionare la versione, e cliccare Write Disk
 
 ---
 
@@ -233,7 +181,7 @@ class: middle
 
 class: center, agenda, middle
 
-## Avviare OpenELEC
+## Avviare LibreELEC
 
 * Mettere l'SD nella RaspBERRY
 * Collegare il cavo HDMI (tipo cec) fra la Rasperry e il Monitor
@@ -265,12 +213,14 @@ System / Apparence / International
 selezionare
 
 ```bash
-Region / Central Europe
+Language / Italian (dopo qualche minuto si aggiorna la lista) (1)
 
-Language / Italian (dopo qualche minuto)
+Regione / Italia
 
 Paese del fuso orario / Italia
 ```
+
+(1) Nota: Per forzare l'aggiornamento della lista andare in Add-on / Installa da un repository / Kodi Add-on
 
 ---
 
@@ -311,13 +261,13 @@ class: center, agenda, middle
 Percorso
 
 ```bash
-Systema / sottomenu Openelec / Rete
+Systema / sottomenu LibreELEC / Network
 ```
 
 selezionare
 
 ```bash
-Server NTP 1 e impostare: pool.ntp.org
+Timeserver 1 sotto NTP Servers e impostare: pool.ntp.org
 ```
 
 ---
@@ -428,29 +378,10 @@ class: center, agenda, middle
 
 ## Repository principali
 
-* Kodi official (già installato)
-* OpenELEC Add-ons (Unofficial)
-* SuperRepo
-
----
-
-class: center, agenda, middle
-
-## Installare OpenELEC Add-on (unofficial)
-
-Il repository **unofficial** di OpenELEC si installa
-dal repository **official** di OpenELEC (già presente di default)
-
-```bash
-Sistema / Add-on / Installa da un repository / ...
-OpenELEC Add-ons (official) / Add-on repository
-```
-
-installare il repository
-
-```bash
-OpenELEC Add-ons (unofficial)
-```
+* Kodi Add-on repository
+* LibreELEC Add-on
+* SuperRepo (da installare)
+* Thoradia (da installare)
 
 ---
 
@@ -461,7 +392,7 @@ class: center, agenda, middle
 Aggiungere il sorgente
 
 ```bash
-Gestione file / Aggiungi sorgente
+Gestore file / Aggiungi sorgente
 
 http://srp.nu
 ```
@@ -470,7 +401,67 @@ Installare il repository
 
 ```bash
 Sistema / Add-on / Installa da un file zip / SuperRepo / ...
-isengard / all / superrepo.kodi.isengard.all-x.y.zz.zip
+jarvis / all / superrepo.kodi.isengard.all-x.y.zz.zip
+```
+
+---
+
+class: center, agenda, middle
+
+## Installare Thoradia (metodo per massaie)
+
+Scaricare il file seguente e metterlo in una chiavetta USB
+
+```bash
+https://raw.githubusercontent.com/thoradia/thoradia/master/service.thoradia.zip
+
+```
+
+Inserire la chiavetta USB e nstallare il file (repository)
+
+```bash
+Sistema / Add-on / Installa da un file zip / Chiavetta USB / service.thoradia.zip
+```
+
+---
+
+class: center, agenda, middle
+
+## Installare Thoradia (metodo per nerd)
+
+Collegarsi in ssh alla raspberry (la password è libreelec)
+
+```bash
+ssh 192.168.0.3 -l root
+```
+
+andare nella cartella storage e scaricare il thoradia
+```bash
+cd /storage
+```
+
+```bash
+wget https://raw.githubusercontent.com/thoradia/thoradia/master/service.thoradia.zip
+```
+
+Installare il file
+
+```bash
+Sistema / Add-on / Installa da un file zip / Cartella Home / service.thoradia.zip
+```
+
+---
+
+class: center, agenda, middle
+
+## Altri Add-ons interessanti
+
+Si installano col metodo nerd
+
+```bash
+https://github.com/streamondemand/plugin.video.streamondemand
+
+
 ```
 
 ---
